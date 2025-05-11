@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+:root {
+  --main-color: #000000;
+  --white-color: #ffffff;
+  --gray: #cccccc;
+  --accent: #00c6ff;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--main-color);
+  color: var(--white-color);
+  scroll-behavior: smooth;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+section {
+  padding: 5rem 7%;
+}
+
+.home {
+  text-align: center;
+  padding: 10rem 5%;
+}
+
+.home h1 {
+  font-size: 5rem;
+}
+
+.home p {
+  font-size: 2rem;
+  color: var(--gray);
+}
+
+.home .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.home .social-icons a {
+  font-size: 2.5rem;
+  color: white;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.home .social-icons a:hover {
+  color: var(--accent);
+  transform: scale(1.3) rotate(5deg);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--gray);
+}
+
+.video-background video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.section-title {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.typing-text {
+  display: inline-block;
+  min-width: 300px;
+  white-space: nowrap;
+  font-family: monospace;
+}
+
+/* Mobil */
+@media (max-width: 1024px) {
+  .home h1 {
+    font-size: 4rem;
+  }
+
+  .home p {
+    font-size: 1.5rem;
+  }
+
+  .home .social-icons a {
+    font-size: 2rem;
+  }
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .home {
+    padding: 6rem 3%;
+  }
+
+  .home h1 {
+    font-size: 3rem;
+  }
+
+  .home p {
+    font-size: 1.2rem;
+  }
+
+  .typing-text {
+    min-width: auto;
+    font-size: 1.2rem;
+  }
+
+  .home .social-icons {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .home .social-icons a {
+    font-size: 1.8rem;
+  }
+
+  section {
+    padding: 3rem 5%;
+  }
+
+  footer {
+    font-size: 0.9rem;
+  }
+
+}
+
+  </style>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hi !</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Video Background -->
+    <div class="video-background">
+      <video autoplay loop muted>
+        <source src="sahil-dalgasi.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Home Section -->
+    <section class="home">
+      <h1>Hi! I'm Kıvanç.</h1>
+      <p><span class="typing-text">Front-End Dev.</span></p>
+
+
+
+      <!-- Social Icons  -->
+      <div class="social-icons">
+        <a href="https://github.com/sk1tliv" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/sk1tliv" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; All Rights Reserved.</p>
+    </footer>
+  </body>
+
+  <script>
+  // Typing Animation
+
+  const typingText = document.querySelector('.typing-text');
+  const texts = ['Front-End Dev.'];
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+      const currentText = texts[textIndex];
+
+      if (isDeleting) {
+          typingText.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+      } else {
+          typingText.textContent = currentText.substring(0, charIndex + 1);
+          charIndex++;
+      }
+
+      if (!isDeleting && charIndex === currentText.length) {
+          isDeleting = true;
+          setTimeout(type, 2000);
+      } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % texts.length;
+          setTimeout(type, 500);
+      } else {
+          setTimeout(type, isDeleting ? 50 : 100);
+      }
+  }
+
+  // Start typing animation
+  setTimeout(type, 1000);
+</script>
+
+</html>
